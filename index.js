@@ -6,7 +6,7 @@ const app = express();
 const multer = require('multer');
 const upload = multer({ dest : '/uploads/'});
 const path = require("path");
-const PORT = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 require("dotenv").config();
 
 
@@ -40,7 +40,7 @@ mongoose.Promise = global.Promise;
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
-app.listen(PORT,function(){
+app.listen(port,function(){
     console.log("now listening for requests");
 })
 
