@@ -52,7 +52,7 @@ componentWillMount() {
           alert('fields missing')
       }
       else{
-      this.props.history.push('/customer');
+      this.props.history.push('/');
       }
       console.log(userObject);
   }
@@ -79,7 +79,7 @@ getAge(e){
             <div className="login-bg">
             <Card className="login" style={{backgroundColor: '#00000085'}}>
             <div >
-                <h1> Login Form </h1> <hr/>
+                <h1> Signup Form </h1> <hr/>
                 <Form horizontal action="post">
 
 
@@ -92,17 +92,7 @@ getAge(e){
                         </Col>
                     </FormGroup>
 
-                     <FormGroup controlId="formHorizontalEmail">
-                        <Col componentClass={ControlLabel} sm={2}>
-                            age
-                        </Col> <br/><br/>
-                        <Col sm={10}>
-                            <FormControl type="number" placeholder="age" onChange={this.getAge}/>
-                        </Col>
-                    </FormGroup>
-
-
-
+                     
                     <FormGroup controlId="formHorizontalEmail">
                         <Col componentClass={ControlLabel} sm={2}>
                             Email
@@ -121,11 +111,21 @@ getAge(e){
                         </Col>
                     </FormGroup>
 
+                    <FormGroup controlId="formHorizontalEmail">
+                        <Col componentClass={ControlLabel} sm={2}>
+                            age
+                        </Col> <br/><br/>
+                        <Col sm={10}>
+                            <FormControl type="number" placeholder="age" onChange={this.getAge}/>
+                        </Col>
+                    </FormGroup>
+
                     <FormGroup>
                         <Col smOffset={2} sm={10}>
                             <Button  bsStyle="success" type="submit" onClick={this.Postdata.bind(this)}>Sign in</Button>
                         </Col>
                     </FormGroup>
+                    <Link to="/"> already have an account? login  </Link>
                 </Form>
             </div>
             </Card>

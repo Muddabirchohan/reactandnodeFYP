@@ -5,9 +5,14 @@ const mongoose = require('mongoose');
 const app = express();
 const multer = require('multer');
 const upload = multer({ dest : '/uploads/'});
+const path = require("path");
+const PORT = process.env.PORT || 8000;
+require("dotenv").config();
+
 
 
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 //initializing routes
 app.use('/api',routers);
@@ -24,7 +29,7 @@ app.use(function(err,req,res,next){
 })
 
 
-mongoose.connect('mongodb://localhost/userData');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/userData');
 mongoose.Promise = global.Promise;
 //sending an object to localhost
 
@@ -32,7 +37,10 @@ mongoose.Promise = global.Promise;
 //     res.send({name : 'chohan'})
 //     console.log("running at port 400")
 // })
-
-app.listen(process.env.PORT || 10000,function(){
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+app.listen(PORT,function(){
     console.log("now listening for requests");
 })
+

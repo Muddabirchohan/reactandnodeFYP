@@ -23,6 +23,6 @@ const UserSchema = new Schema({
     }
 })
 
-const User2 = mongoose.model('userdatabases2',UserSchema);
-module.exports = User2;
+const Customer = mongoose.model('customerdatabases',UserSchema);
+module.exports = Customer;
 

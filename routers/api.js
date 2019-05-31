@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/users');
-const User2 = require('../models/user2');
+const Customer = require('../models/user2');
 
 const multer = require('multer');
 
@@ -49,7 +49,7 @@ router.get('/user', function (req, res, next) {
 
 
 router.get('/customer', function (req, res, next) {
-    User2.find({}, function (err, users) {
+    Customer.find({}, function (err, users) {
         var userMap = {};
         users.forEach(function (user) {
             userMap[user._id] = user;
@@ -59,20 +59,14 @@ router.get('/customer', function (req, res, next) {
 })
 
 
-router.post('/customer', function (req, res, next) {
 
-    let userObject = {
-       
-        name: req.body.name,
-        age: req.body.age,
-        email: req.body.email,
-        pass: req.body.password
-    }
-    User2.create(userObject).then(function (user) {
-         console.log(req.body)
+router.post('/customer', function (req, res, next) {
+    Customer.create(req.body).then(function (user) {
+        console.log(req.body)
         res.send(user)
     }).catch(next)
 
+    
 })
 
 
@@ -94,12 +88,6 @@ router.post('/user', function (req, res, next) {
     }).catch(next)
 
 })
-
-
-
-
-
-
 
 
 

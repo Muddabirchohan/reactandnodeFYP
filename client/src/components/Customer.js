@@ -21,7 +21,7 @@ constructor(){
 }
 
 componentWillMount() {
-    axios('http://localhost:10000/api/customer')
+    axios.get('http://localhost:10000/api/user')
       .then(res => {
           console.log("hello",res);
         const users = res.data;
@@ -38,9 +38,11 @@ componentWillMount() {
     var flg = false;
     e.preventDefault();
     const found = users.map((obj) => {
-      if (obj.email == this.state.email && obj.password == this.state.password) {
+      if (obj.email == this.state.email && obj.name == this.state.password) {
         this.setState({ change: !this.state.change })
         flg = false
+        this.props.history.push('/app');
+
       }
       else if (flg == true) {
         alert('user not found ');
@@ -84,13 +86,12 @@ componentWillMount() {
 
                     <FormGroup>
                         <Col smOffset={2} sm={10}>
-                            <Button  bsStyle="success" type="submit">Sign in</Button>
+                            <Button  bsStyle="success" type="submit">Login</Button>
                         </Col>
                     </FormGroup>
                 </Form>
             </div>
-
-            <Link to="sighnup"> sighnup for free </Link>
+            <Link to="sighnup"> register or sighnup </Link>
             </Card>
             </div>
         );

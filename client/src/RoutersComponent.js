@@ -15,11 +15,12 @@ export default class RoutersComponent extends Component {
       <div>
         <BrowserRouter>
         <Switch>
-        <Route exact={true} path="/" component={App}/>   
+          
+        <Route  path="/app" component={App}/>   
         <Route  path="/form" component={formsubmit}/>          
         <Route path="/description" component={ProductDescription}/> 
         <Route path="/sbay" component={sbaytop}/>
-        <Route path="/customer" component={Customer}/>
+        <Route exact={true} path="/" component={Customer}/>
         <Route path="/sighnup" component={Sighnup}/>
         <Route path="/SellerPage" component={SellerPage}/>
         </Switch>
