@@ -68,5 +68,4 @@
     "output": "src/assets/react-toolbox"
   },
   "proxy": "http://localhost:8000"
-
 }

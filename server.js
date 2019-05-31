@@ -9,7 +9,6 @@ const port = process.env.PORT || 8000;
 require("dotenv").config();
 
 
-
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "client", "build")))
 
